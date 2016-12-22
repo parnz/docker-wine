@@ -1,13 +1,11 @@
-FROM ubuntu
-MAINTAINER Brandon R. Stoner <monokrome@monokro.me>
+FROM ubuntu:16.04
 
 RUN dpkg --add-architecture i386
 
-RUN apt-get update -y
-RUN apt-get install -y software-properties-common && add-apt-repository -y ppa:ubuntu-wine/ppa
-RUN apt-get update -y
-
-RUN apt-get install -y wine1.7 winetricks xvfb
-
-RUN apt-get purge -y software-properties-common
-RUN apt-get autoclean -y
+RUN apt-get update -y && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository -y ppa:wime/wine-builds && \
+    apt-get update -y && \
+    apt-get install -y wine-staging xvfb && \
+    apt-get purge -y software-properties-common && \
+    apt-get autoclean -y
