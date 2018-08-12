@@ -22,3 +22,4 @@ WORKDIR /home/wine
 RUN wine wineboot && xvfb-run winetricks -q dotnet40 corefonts
 
 RUN echo "alias csc='wine /home/wine/.wine/drive_c/windows/Microsoft.NET/Framework/v4.0.30319/csc.exe'" >> ~/.bashrc
+
