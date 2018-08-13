@@ -15,13 +15,14 @@ RUN apt-get update -y && \
     apt-get purge -y software-properties-common && \
     apt-get autoclean -y && \
     useradd -u 1001 -d /home/wine -m -s /bin/bash wine
+    
+RUN echo "wine ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 USER wine
-RUN echo "wine ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
 RUN cd /home/wine && git clone https://github.com/kanaka/noVNC.git && \
     cd noVNC/utils && git clone https://github.com/kanaka/websockify websockify
     
-
 ENV HOME /home/wine
 ENV WINEARCH win32
 ENV WINEPREFIX /home/wine/.wine
