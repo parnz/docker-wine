@@ -32,11 +32,13 @@ RUN echo "alias csc='wine /home/wine/.wine/drive_c/windows/Microsoft.NET/Framewo
 
 ADD startup.sh /home/wine/startup.sh
 
+USER root
 RUN cd /home/wine/ && \
-    sudo chmod 0755 startup.sh && \
+    chmod 0755 startup.sh && \
     apt-get autoclean && \
     apt-get autoremove && \
     rm -rf /var/lib/apt/lists/*
-
+    
+USER wine
 CMD ["/home/wine/startup.sh"]
 EXPOSE 6080
