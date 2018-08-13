@@ -11,7 +11,7 @@ RUN apt-get update -y && \
     apt-get install -y --no-install-recommends software-properties-common && \
     add-apt-repository -y ppa:wine/wine-builds && \
     apt-get update -y && \
-    apt-get install -y wine-staging winetricks lynx xvfb supervisor mono-devel nuget apt-utils novnc x11vnc git net-tools nano && \
+    apt-get install -y wine-staging winetricks lynx xvfb supervisor mono-devel nuget apt-utils novnc x11vnc git net-tools nano openbox menu && \
     apt-get purge -y software-properties-common && \
     apt-get autoclean -y && \
     useradd -u 1001 -d /home/wine -m -s /bin/bash wine
@@ -43,6 +43,6 @@ RUN cd /home/wine/ && \
     apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/*
     
-USER wine
+USER root
 CMD ["/home/wine/startup.sh"]
 EXPOSE 6080
