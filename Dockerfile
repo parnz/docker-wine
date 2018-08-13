@@ -1,12 +1,15 @@
 FROM ubuntu:16.04
 
+ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND teletype
+
 RUN dpkg --add-architecture i386
 
 RUN apt-get update -y && \
-    apt-get install -y software-properties-common && \
+    apt-get install -y --no-install-recommends software-properties-common && \
     add-apt-repository -y ppa:wine/wine-builds && \
     apt-get update -y && \
-    apt-get install -y wine-staging winetricks lynx xvfb mono-devel nuget && \
+    apt-get install -y wine-staging winetricks lynx xvfb mono-devel nuget apt-utils && \
     apt-get purge -y software-properties-common && \
     apt-get autoclean -y && \
     useradd -u 1001 -d /home/wine -m -s /bin/bash wine
