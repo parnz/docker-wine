@@ -35,6 +35,8 @@ RUN echo "alias csc='wine /home/wine/.wine/drive_c/windows/Microsoft.NET/Framewo
 
 ADD startup.sh /home/wine/startup.sh
 
+USER root
+
 RUN cd /home/wine/ && \
     chmod 0755 startup.sh && \
     apt-get -y autoclean && \
