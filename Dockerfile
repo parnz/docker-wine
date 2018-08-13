@@ -35,8 +35,8 @@ ADD startup.sh /home/wine/startup.sh
 USER root
 RUN cd /home/wine/ && \
     chmod 0755 startup.sh && \
-    apt-get autoclean && \
-    apt-get autoremove && \
+    apt-get -y autoclean && \
+    apt-get -y autoremove && \
     rm -rf /var/lib/apt/lists/*
     
 USER wine
