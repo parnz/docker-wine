@@ -9,7 +9,7 @@ RUN apt-get update -y && \
     apt-get install -y --no-install-recommends software-properties-common && \
     add-apt-repository -y ppa:wine/wine-builds && \
     apt-get update -y && \
-    apt-get install -y wine-staging winetricks lynx xvfb supervisor mono-devel nuget apt-utils novnc x11vnc && \
+    apt-get install -y wine-staging winetricks lynx xvfb supervisor mono-devel nuget apt-utils novnc x11vnc git && \
     apt-get purge -y software-properties-common && \
     apt-get autoclean -y && \
     useradd -u 1001 -d /home/wine -m -s /bin/bash wine
